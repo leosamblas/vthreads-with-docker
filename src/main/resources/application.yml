@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: vthreads
+  threads:
+    virtual:
+      enabled: true
+  cache:
+    type: redis
+  data:
+    redis:
+      host: ${HOST:localhost}
+      port: ${PORT:6379}

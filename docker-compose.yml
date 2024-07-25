@@ -1,0 +1,30 @@
+services:
+  vthreads:
+    image: vthreads:latest
+    container_name: vthreads-service
+    hostname: vthreads
+    restart: on-failure
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    environment:
+      - HOST=redis
+      - PORT=6379
+    deploy:
+      resources:
+        limits:
+          cpus: '0.50'
+          memory: 512M
+        reservations:
+          cpus: '0.25'
+          memory: 256M
+    networks:
+      - vthreads-network
+
+#PARA OS MEUS TESTES! XD
+networks:
+  vthreads-network:
+    external:
+      name: docker-compose_redis-network
