@@ -9,10 +9,13 @@ services:
       dockerfile: Dockerfile
     ports:
       - "8080:8080"
+      #- "8080"
     environment:
       - HOST=redis
       - PORT=6379
     deploy:
+      #mode: replicated
+      #replicas: 2
       resources:
         limits:
           cpus: '0.50'
@@ -26,5 +29,5 @@ services:
 #PARA OS MEUS TESTES! XD
 networks:
   vthreads-network:
-    external:
+    external: 
       name: docker-compose_redis-network
