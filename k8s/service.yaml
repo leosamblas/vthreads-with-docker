@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: vthreads-service
+  namespace: development
+spec:
+  type: LoadBalancer
+  selector:
+    app: vthreads
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: redis
+  namespace: development
+spec:
+  type: ExternalName
+  externalName: host.docker.internal

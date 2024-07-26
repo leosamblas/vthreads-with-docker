@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vthreads
+  namespace: development
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: vthreads
+  template:
+    metadata:
+      labels:
+        app: vthreads
+    spec:
+      automountServiceAccountToken: false
+      containers:
+      - name: vthreads
+        image: vthreads:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8080
+        env:
+        - name: HOST
+          value: redis
+        - name: PORT
+          value: "6379"
+        resources:
+          limits:
+            cpu: '0.50'
+            memory: 512M
+          requests:
+            cpu: '0.25'
+            memory: 256M
