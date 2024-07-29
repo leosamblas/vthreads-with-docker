@@ -5,6 +5,11 @@ metadata:
   namespace: development
 spec:
   replicas: 2
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 50%
+      maxSurge: 1
   selector:
     matchLabels:
       app: vthreads
@@ -20,6 +25,11 @@ spec:
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 8080
+        startupProbe:
+            tcpSocket:
+              port: 8080
+            initialDelaySeconds: 20
+            periodSeconds: 5
         env:
         - name: HOST
           value: redis
