@@ -17,6 +17,8 @@ import org.springframework.data.redis.serializer.RedisSerializationContext.Seria
 import org.springframework.http.ResponseEntity;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import lombok.extern.slf4j.Slf4j;
@@ -38,14 +40,14 @@ public class VthreadsApplication {
 		SpringApplication.run(VthreadsApplication.class, args);
 	}
 
-	@GetMapping
+	@GetMapping("/hello")
 	public ResponseEntity<String> hello() {
 		serviceTeste.teste();
 		return ResponseEntity.ok("Hello, World!");
 	}
 
 	@GetMapping("/teste")
-	public ResponseEntity<String> teste(String name) {
+	public ResponseEntity<String> teste(@RequestParam("param") String name) {
 		log.info("TESTE CACHE");
 		return ResponseEntity.ok(serviceTeste.getTeste(name));
 	}

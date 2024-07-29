@@ -2,7 +2,7 @@
 
 # Variables
 DOCKER_IMAGE_NAME="vthreads"
-DOCKER_IMAGE_TAG="1.0.0"
+DOCKER_IMAGE_TAG="latest"
 DOCKERFILE_PATH="./Dockerfile"
 K8S_DEPLOYMENT_FILE="deployment.yaml"
 K8S_SERVICE_FILE="service.yaml"

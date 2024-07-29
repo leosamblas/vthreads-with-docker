@@ -4,7 +4,7 @@ metadata:
   name: vthreads-service
   namespace: development
 spec:
-  type: LoadBalancer
+  type: ClusterIP
   selector:
     app: vthreads
   ports:
