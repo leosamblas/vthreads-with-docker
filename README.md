@@ -1,5 +1,5 @@
 # vthreads-with-docker
 
-# An Exemple for Kubernetes Application
+# An Example for Kubernetes Application
 
 ![Kubernetes Dashboard](img/image.png)
