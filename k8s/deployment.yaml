@@ -25,11 +25,25 @@ spec:
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 8080
+        livenessProbe:
+          httpGet:
+            path: "/actuator/health/liveness"
+            port: 8080
+          initialDelaySeconds: 30
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: "/actuator/health/readiness"
+            port: 8080
+          periodSeconds: 10
+          failureThreshold: 3
         startupProbe:
-            tcpSocket:
-              port: 8080
-            initialDelaySeconds: 20
-            periodSeconds: 5
+          httpGet:
+            path: "/actuator/health/liveness"
+            port: 8080
+          initialDelaySeconds: 20
+          periodSeconds: 10
+          failureThreshold: 3
         env:
         - name: HOST
           value: redis
@@ -37,8 +51,8 @@ spec:
           value: "6379"
         resources:
           limits:
-            cpu: '0.50'
+            cpu: 500m
             memory: 512M
           requests:
-            cpu: '0.25'
+            cpu: 200m
             memory: 256M

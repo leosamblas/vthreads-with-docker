@@ -8,6 +8,7 @@ export K8S_DEPLOYMENT_FILE="deployment.yaml"
 export K8S_SERVICE_FILE="service.yaml"
 export K8S_INGRESS_FILE="ingress.yaml"
 export K8S_NAMESPACE="development"
+export K8S_HPA_FILE="hpa.yaml"
 
 # Step 1: Build the Docker image only locally
 echo "Building Docker image..."
@@ -25,11 +26,15 @@ kubectl create namespace ${K8S_NAMESPACE} || true
 echo "Applying Kubernetes Deployment..."
 envsubst < ${K8S_DEPLOYMENT_FILE} | kubectl apply -f -
 
-# Step 4: Apply the Kubernetes Service
+# Step 4: Apply the Kubernetes HPA
+echo "Waiting for the Hpa to be ready..."
+kubectl apply -f ${K8S_HPA_FILE}
+
+# Step 5: Apply the Kubernetes Service
 echo "Applying Kubernetes Service..."
 kubectl apply -f ${K8S_SERVICE_FILE}
 
-# Step 5: Apply the Kubernetes Ingress
+# Step 6: Apply the Kubernetes Ingress
 echo "Applying Kubernetes Ingress..."
 kubectl apply -f ${K8S_INGRESS_FILE}
 
