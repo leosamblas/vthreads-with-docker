@@ -2,4 +2,4 @@
 
 # An Exemple for Kubernetes Application
 
-![Kubernetes Dashboard] (/img/image.png)
+![Kubernetes Dashboard] (img/image.png)
