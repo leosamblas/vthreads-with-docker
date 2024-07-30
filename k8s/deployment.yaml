@@ -21,7 +21,7 @@ spec:
       automountServiceAccountToken: false
       containers:
       - name: vthreads
-        image: vthreads:latest
+        image: vthreads:${DOCKER_IMAGE_TAG}
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 8080

@@ -3,8 +3,8 @@ WORKDIR /app
 COPY pom.xml .
 RUN mvn dependency:go-offline
 COPY src src
-RUN mvn package 
-RUN java -Djarmode=layertools -jar target/vthreads-0.0.1-SNAPSHOT.jar extract
+RUN mvn clean package 
+RUN java -Djarmode=layertools -jar target/*.jar extract
   
 FROM eclipse-temurin:21-jre-alpine
 WORKDIR /app
