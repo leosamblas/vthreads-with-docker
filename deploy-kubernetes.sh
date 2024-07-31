@@ -3,7 +3,7 @@
 # Variables
 export DOCKER_IMAGE_NAME="vthreads"
 export DOCKER_IMAGE_TAG="1.0.0"
-export DOCKERFILE_PATH="./Dockerfile"
+export DOCKERFILE_PATH="./Dockerfile.native"
 export K8S_DEPLOYMENT_FILE="deployment.yaml"
 export K8S_SERVICE_FILE="service.yaml"
 export K8S_INGRESS_FILE="ingress.yaml"
